@@ -1,11 +1,9 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
-
 import time
 import ADS1256
 import RPi.GPIO as GPIO
-
 
 try:
     ADC = ADS1256.ADS1256()
@@ -22,7 +20,6 @@ try:
         print ("6 ADC = %lf"%(ADC_Value[6]*5.0/0x7fffff))
         print ("7 ADC = %lf"%(ADC_Value[7]*5.0/0x7fffff))
         print ("\33[9A")
-
         
 except :
     GPIO.cleanup()
