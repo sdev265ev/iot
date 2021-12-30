@@ -34,10 +34,10 @@ ADS1256_DRATE_E = {'ADS1256_30000SPS' : 0xF0, # reset the default values
 
 # registration definition
 REG_E = {'REG_STATUS' : 0,  # x1H
-         'REG_MUX' : 1,     # 01H
+         'REG_MUX'   : 1,     # 01H
          'REG_ADCON' : 2,   # 20H
          'REG_DRATE' : 3,   # F0H
-         'REG_IO' : 4,      # E0H
+         'REG_IO'    : 4,      # E0H
          'REG_OFC0' : 5,    # xxH
          'REG_OFC1' : 6,    # xxH
          'REG_OFC2' : 7,    # xxH
@@ -90,6 +90,7 @@ class ADS1256:
     def ADS1256_Read_data(self, reg):
         config.digital_write(self.cs_pin, GPIO.LOW)#cs  0
         config.spi_writebyte([CMD['CMD_RREG'] | reg, 0x00])
+        print (CMD['CMD_RREG'] | reg, 0x00])
         data = config.spi_readbytes(1)
         config.digital_write(self.cs_pin, GPIO.HIGH)#cs 1
 
