@@ -90,7 +90,7 @@ class ADS1256:
     def ADS1256_Read_data(self, reg):
         config.digital_write(self.cs_pin, GPIO.LOW)#cs  0
         config.spi_writebyte([CMD['CMD_RREG'] | reg, 0x00])
-        print (CMD['CMD_RREG'] | reg, 0x00])
+        print (str(CMD['CMD_RREG'] | reg, 0x00]))
         data = config.spi_readbytes(1)
         config.digital_write(self.cs_pin, GPIO.HIGH)#cs 1
 
