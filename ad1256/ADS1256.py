@@ -97,7 +97,7 @@ class ADS1256:
         
     def ADS1256_WaitDRDY(self):
         for i in range(0,400000,1):
-            if(config.digital_read(self.drdy_pin) == 0) 
+            if(config.digital_read(self.drdy_pin) == 0):
                 break
         if(i >= 400000):
             print ("Time Out ...\r\n")
