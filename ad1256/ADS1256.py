@@ -1,18 +1,16 @@
 import config
 import RPi.GPIO as GPIO
 
-
 ScanMode = 0
 
-
 # gain channel
-ADS1256_GAIN_E = {'ADS1256_GAIN_1' : 0, # GAIN   1
-                  'ADS1256_GAIN_2' : 1,	# GAIN   2
-                  'ADS1256_GAIN_4' : 2,	# GAIN   4
-                  'ADS1256_GAIN_8' : 3,	# GAIN   8
-                  'ADS1256_GAIN_16' : 4,# GAIN  16
-                  'ADS1256_GAIN_32' : 5,# GAIN  32
-                  'ADS1256_GAIN_64' : 6,# GAIN  64
+ADS1256_GAIN_E = {'ADS1256_GAIN_1'  : 0, # GAIN   1
+                  'ADS1256_GAIN_2'  : 1, # GAIN   2
+                  'ADS1256_GAIN_4'  : 2, # GAIN   4
+                  'ADS1256_GAIN_8'  : 3, # GAIN   8
+                  'ADS1256_GAIN_16' : 4, # GAIN  16
+                  'ADS1256_GAIN_32' : 5, # GAIN  32
+                  'ADS1256_GAIN_64' : 6,#  GAIN  64
                  }
 
 # data rate
@@ -99,8 +97,7 @@ class ADS1256:
         
     def ADS1256_WaitDRDY(self):
         for i in range(0,400000,1):
-            if(config.digital_read(self.drdy_pin) == 0):
-                
+            if(config.digital_read(self.drdy_pin) == 0) 
                 break
         if(i >= 400000):
             print ("Time Out ...\r\n")
@@ -127,7 +124,7 @@ class ADS1256:
         config.spi_writebyte(buf)
         
         config.digital_write(self.cs_pin, GPIO.HIGH)#cs 1
-        config.delay_ms(1) 
+        config.delay_ms(100) 
 
 
 
