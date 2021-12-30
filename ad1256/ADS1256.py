@@ -200,6 +200,7 @@ class ADS1256:
         ADC_Value = [0,0,0,0,0,0,0,0]
         for i in range(0,8,1):
             ADC_Value[i] = self.ADS1256_GetChannalValue(i)
+            config.delay_ms(100) 
         return ADC_Value
 ### END OF FILE ###
 
