@@ -173,6 +173,7 @@ class ADS1256:
         read |= (buf[2]) & 0xff
         if (read & 0x800000):
             read &= 0xF000000
+        config.delay_ms(400) 
         return read
  
     def ADS1256_GetChannalValue(self, Channel):
