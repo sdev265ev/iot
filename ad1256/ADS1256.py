@@ -71,7 +71,7 @@ class ADS1256:
 
     # Hardware reset
     def ADS1256_reset(self):
-        GPIO.cleanup()
+        # GPIO.cleanup()
         config.digital_write(self.rst_pin, GPIO.HIGH)
         config.delay_ms(200)
         config.digital_write(self.rst_pin, GPIO.LOW)
