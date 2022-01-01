@@ -15,7 +15,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app_mode = os.getenv("app_mode")
-interval = 10  # int(os.getenv('interval'))
+interval = 10  
+# int(os.getenv('interval'))
 broker = os.getenv("broker")
 port = int(os.getenv("port"))
 user = os.getenv("user")
