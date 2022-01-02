@@ -1,31 +1,13 @@
 import paho.mqtt.client as mqtt #import the client1
-import time
-############
-def on_message(client, userdata, message):
-        print("message received " ,str(message.payload.decode("utf-8")))
-        print("message topic=",message.topic)
-        print("message qos=",message.qos)
-        print("message retain flag=",message.retain)
-########################################
-broker_address="192.168.254.55"
-#broker_address="test.mosquitto.org"
-print("creating new instance")
-client = mqtt.Client() #create new instance
-client.username_pw_set("mqttuser", "mqttpass")
-client.on_message=on_message #attach function to callback
+def on_connect(client, userdata, flags, rc):  # The callback for when the client connects to the broker
+	print("Connected with result code {0}".format(str(rc)))  # Print result of connection attempt
+	client.subscribe("digitest/test1")  # Subscribe to the topic “digitest/test1”, receive any messages published on it
 
-print("connecting to broker")
-client.connect(broker_address) #connect to broker
-client.loop_start() #start the loop
-print("Subscribing to topic","test/status")
-client.subscribe("test/status")
-
-for x in range(20):
-        #print("Publishing message to topic","test/status")
-        #client.publish("test/status", "Hello World")
-        #client.publish("test/status","on")
-
-        time.sleep(4) # wait
-#client.loop_stop() #stop the loop
-
-
+def GetMessage(topic):
+	broker_address="192.168.254.55"
+	#broker_address="test.mosquitto.org"
+	client = mqtt.Client("test")  # Create instance of client with client ID “digi_mqtt_test”
+	client.on_connect = on_connect  # Define callback function for successful connection
+	# client.connect("m2m.eclipse.org", 1883, 60)  # Connect to (broker, port, keepalive-time)
+	client.connect(broker, 17300)
+	
