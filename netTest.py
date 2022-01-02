@@ -17,7 +17,7 @@ load_dotenv()
 app_mode = os.getenv("app_mode")
 interval = 0 # int(os.getenv('interval'))
 broker = os.getenv("broker")
-port = int(os.getenv("port"))
+port = 80 # int(os.getenv("port"))
 user = os.getenv("user")
 password = os.getenv("password")
 # Splunk env:
