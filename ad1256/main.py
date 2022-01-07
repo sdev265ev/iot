@@ -19,6 +19,7 @@ try:
 	ADC.ADS1256_init()
 	ADC_Value = ADC.ADS1256_GetAll()
 	print ("0 ADC = ", ADC_Value[0] * 5 / 2**24)
+	print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff))
 	while(1):
 		ADC_Value = ADC.ADS1256_GetAll()
 		print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff))
