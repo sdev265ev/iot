@@ -17,6 +17,8 @@ def Pubmqtt(topic, message, qos=0, retain=True):
 try:
 	ADC = ADS1256.ADS1256()
 	ADC.ADS1256_init()
+	x = 2**24
+	print (x)
 	ADC_Value = ADC.ADS1256_GetAll()
 	print ("0 ADC = ", ADC_Value[0])
 	print ("0 ADC = ", ADC_Value[0] * 5)
