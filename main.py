@@ -26,6 +26,7 @@ try:
 	print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff))
 	print ()
 	print ()
+	time.sleep(2)
 	while(1):
 		ADC_Value = ADC.ADS1256_GetAll()
 		print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff))
