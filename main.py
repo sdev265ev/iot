@@ -22,7 +22,7 @@ try:
 	ADC_Value = ADC.ADS1256_GetAll()
 	print ("0 ADC = ", ADC_Value[0])
 	print ("0 ADC = ", ADC_Value[0] * 5)
-	print ("0 ADC = ", ADC_Value[0] * 5 / 2**24)
+	print ("0 ADC = ", ADC_Value[0] * 5 / x)
 	print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff))
 	print ()
 	print ()
