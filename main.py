@@ -19,7 +19,7 @@ try:
 	ADC.ADS1256_init()
 	x = float(2**23)
 	
-	offset =  1.232
+	offset =  1.235
 	volts=0
 	ADC_Value = ADC.ADS1256_GetAll()
 	for i in range (0,8):
