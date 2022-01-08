@@ -37,7 +37,7 @@ try:
 		print (i, volts)
 		topic = "mh/status/test/volts" + str(i)
 		print (topic, volts)
-		z = Pubmqtt(topic, str(volts))
+		client.publish(topic, str(volts))
 	#ADC_Value = ADC.ADS1256_GetAll()
 	#print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff - offset))
 	#print ("1 ADC = %lf"%(ADC_Value[1]*5.0/0x7fffff - offset))
