@@ -4,6 +4,13 @@ import time
 import ADS1256
 import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt #import the client
+
+xx=""
+def on_message(client, userdata, message):
+	global xx
+	print("message received " ,str(message.payload.decode("utf-8")))
+	xx =  str(message.payload.decode("utf-8"))
+
 def Pubmqtt(topic, message, qos=0, retain=True):
 	brokerAddress="192.168.254.55"
 	#brokerAddress="test.mosquitto.org"
@@ -11,6 +18,7 @@ def Pubmqtt(topic, message, qos=0, retain=True):
 	client = mqtt.Client()
 	client.username_pw_set("mqttuser", "mqttpass")
 	client.connect(brokerAddress, port)
+	client.on_message=on_message #attach function to callback
 	client.publish(topic, message, qos, retain)
 	client1.disconnect()
 	return true
