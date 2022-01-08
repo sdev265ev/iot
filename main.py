@@ -26,7 +26,7 @@ try:
 		volts = (ADC_Value[i] * 5.0 / x) - offset
 		volts =round(volts,3)
 		print (i, volts)
-		topic = "mh/status/test/volts/" + str(i)
+		topic = "mh/status/test/volts" + str(i)
 		print topic
 		Pubmqtt(topic, str(volts))
 	#ADC_Value = ADC.ADS1256_GetAll()
