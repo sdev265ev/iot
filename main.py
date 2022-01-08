@@ -28,7 +28,7 @@ try:
 		volts =round(volts,3)
 		print (i, volts)
 		topic = "mh/status/test/volts" + str(i)
-		print topic
+		print (topic, volts)
 		Pubmqtt(topic, str(volts))
 	#ADC_Value = ADC.ADS1256_GetAll()
 	#print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff - offset))
