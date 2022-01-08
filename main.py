@@ -31,11 +31,11 @@ try:
 	print ()
 	print ()
 	time.sleep(2)
-	offset =  1.235
+	offset =  1.238
 	while(1):
 		volts=0
 		ADC_Value = ADC.ADS1256_GetAll()
-		for i in range (0,7):
+		for i in range (0,8):
 			volts = ADC_Value[i]*5.0/0x7fffff - offset
 			print ( i, volts)
 		#ADC_Value = ADC.ADS1256_GetAll()
