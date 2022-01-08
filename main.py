@@ -19,18 +19,14 @@ try:
 	ADC.ADS1256_init()
 	x = float(2**23)
 	ADC_Value = ADC.ADS1256_GetAll()
-	time.sleep(2)	
 	ADC_Value = ADC.ADS1256_GetAll()
 	print ("0 ADC = ", ADC_Value[0] * 5.0 / x)
-	time.sleep(2)
 	ADC_Value = ADC.ADS1256_GetAll()
 	print ("0 ADC = ", ADC_Value[0] * 5.0 / x)
-	time.sleep(2)
 	ADC_Value = ADC.ADS1256_GetAll()
 	print ("0 ADC = ", ADC_Value[0] * 5.0 / x - 1.236)
 	print ()
 	print ()
-	time.sleep(2)
 	offset =  1.238
 	while(1):
 		volts=0
