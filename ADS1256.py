@@ -1,6 +1,6 @@
 import config
 import RPi.GPIO as GPIO
-
+inport time
 ScanMode = 0
 
 # gain channel
@@ -20,16 +20,16 @@ ADS1256_DRATE_E = {'ADS1256_30000SPS' : 0xF0, # reset the default values
                    'ADS1256_3750SPS' : 0xC0,
                    'ADS1256_2000SPS' : 0xB0,
                    'ADS1256_1000SPS' : 0xA1,
-                   'ADS1256_500SPS' : 0x92,
-                   'ADS1256_100SPS' : 0x82,
-                   'ADS1256_60SPS' : 0x72,
-                   'ADS1256_50SPS' : 0x63,
-                   'ADS1256_30SPS' : 0x53,
-                   'ADS1256_25SPS' : 0x43,
-                   'ADS1256_15SPS' : 0x33,
-                   'ADS1256_10SPS' : 0x20,
-                   'ADS1256_5SPS' : 0x13,
-                   'ADS1256_2d5SPS' : 0x03
+                   'ADS1256_500SPS'  : 0x92,
+                   'ADS1256_100SPS'  : 0x82,
+                   'ADS1256_60SPS'   : 0x72,
+                   'ADS1256_50SPS'   : 0x63,
+                   'ADS1256_30SPS'   : 0x53,
+                   'ADS1256_25SPS'   : 0x43,
+                   'ADS1256_15SPS'   : 0x33,
+                   'ADS1256_10SPS'   : 0x20,
+                   'ADS1256_5SPS'    : 0x13,
+                   'ADS1256_2d5SPS'  : 0x03
                   }
 
 # registration definition
@@ -52,15 +52,15 @@ CMD = {'CMD_WAKEUP' : 0x00,     # Completes SYNC and Exits Standby Mode 0000  00
        'CMD_RDATAC' : 0x03,     # Read Data Continuously 0000   0011 (03h)
        'CMD_SDATAC' : 0x0F,     # Stop Read Data Continuously 0000   1111 (0Fh)
        'CMD_RREG' : 0x10,       # Read from REG rrr 0001 rrrr (1xh)
-       'CMD_WREG' : 0x50,       # Write to REG rrr 0101 rrrr (5xh)
-       'CMD_SELFCAL' : 0xF0,    # Offset and Gain Self-Calibration 1111    0000 (F0h)
-       'CMD_SELFOCAL' : 0xF1,   # Offset Self-Calibration 1111    0001 (F1h)
-       'CMD_SELFGCAL' : 0xF2,   # Gain Self-Calibration 1111    0010 (F2h)
-       'CMD_SYSOCAL' : 0xF3,    # System Offset Calibration 1111   0011 (F3h)
-       'CMD_SYSGCAL' : 0xF4,    # System Gain Calibration 1111    0100 (F4h)
-       'CMD_SYNC' : 0xFC,       # Synchronize the A/D Conversion 1111   1100 (FCh)
-       'CMD_STANDBY' : 0xFD,    # Begin Standby Mode 1111   1101 (FDh)
-       'CMD_RESET' : 0xFE,      # Reset to Power-Up Values 1111   1110 (FEh)
+       'CMD_WREG'     : 0x50,   # Write to REG rrr 0101 rrrr (5xh)
+       'CMD_SELFCAL'  : 0xF0,   # Offset and Gain Self-Calibration 1111 0000 (F0h)
+       'CMD_SELFOCAL' : 0xF1,   # Offset Self-Calibration          1111 0001 (F1h)
+       'CMD_SELFGCAL' : 0xF2,   # Gain Self-Calibration            1111 0010 (F2h)
+       'CMD_SYSOCAL'  : 0xF3,   # System Offset Calibration        1111 0011 (F3h)
+       'CMD_SYSGCAL'  : 0xF4,   # System Gain Calibration          1111 0100 (F4h)
+       'CMD_SYNC'     : 0xFC,   # Synchronize the A/D Conversion   1111 1100 (FCh)
+       'CMD_STANDBY'  : 0xFD,   # Begin Standby Mode               1111 1101 (FDh)
+       'CMD_RESET'    : 0xFE,   # Reset to Power-Up Values         1111 1110 (FEh)
       }
 
 class ADS1256:
@@ -94,7 +94,6 @@ class ADS1256:
         print (str(CMD['CMD_RREG']))
         data = config.spi_readbytes(1)
         config.digital_write(self.cs_pin, GPIO.HIGH)#cs 1
-
         return data
         
     def ADS1256_WaitDRDY(self):
@@ -202,7 +201,7 @@ class ADS1256:
         ADC_Value = [0,0,0,0,0,0,0,0]
         for i in range(0,8,1):
             ADC_Value[i] = self.ADS1256_GetChannalValue(i)
-            config.delay_ms(100) 
+            time.sleep(.3)
         return ADC_Value
 ### END OF FILE ###
 
