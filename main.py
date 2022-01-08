@@ -31,7 +31,7 @@ try:
 	print ()
 	print ()
 	time.sleep(2)
-	offset =  1.236
+	offset =  1.230
 	while(1):
 		ADC_Value = ADC.ADS1256_GetAll()
 		print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff - offset))
