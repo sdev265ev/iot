@@ -13,6 +13,7 @@ def Pubmqtt(topic, message, qos=0, retain=True):
 	client.connect(brokerAddress, port)
 	client.publish(topic, message, qos, retain)
 	client1.disconnect()
+	return true
 
 try:
 	ADC = ADS1256.ADS1256()
