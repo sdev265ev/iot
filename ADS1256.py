@@ -1,6 +1,6 @@
 import config
 import RPi.GPIO as GPIO
-inport time
+import time
 ScanMode = 0
 
 # gain channel
