@@ -18,32 +18,23 @@ try:
 	ADC = ADS1256.ADS1256()
 	ADC.ADS1256_init()
 	x = float(2**23)
-	ADC_Value = ADC.ADS1256_GetAll()
-	ADC_Value = ADC.ADS1256_GetAll()
-	print ("0 ADC = ", ADC_Value[0] * 5.0 / x)
-	ADC_Value = ADC.ADS1256_GetAll()
-	print ("0 ADC = ", ADC_Value[0] * 5.0 / x)
-	ADC_Value = ADC.ADS1256_GetAll()
-	print ("0 ADC = ", ADC_Value[0] * 5.0 / x - 1.236)
-	print ()
-	print ()
+	
 	offset =  1.238
-	while(1):
-		volts=0
-		ADC_Value = ADC.ADS1256_GetAll()
-		for i in range (0,8):
-			volts = ADC_Value[i]*5.0/0x7fffff - offset
-			print (round(i,3), volts)
-		#ADC_Value = ADC.ADS1256_GetAll()
-		#print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff - offset))
-		#print ("1 ADC = %lf"%(ADC_Value[1]*5.0/0x7fffff - offset))
-		#print ("2 ADC = %lf"%(ADC_Value[2]*5.0/0x7fffff - offset))
-		#print ("3 ADC = %lf"%(ADC_Value[3]*5.0/0x7fffff - offset))
-		#print ("4 ADC = %lf"%(ADC_Value[4]*5.0/0x7fffff - offset))
-		Vprint ("5 ADC = %lf"%(ADC_Value[5]*5.0/0x7fffff - offset))
-		#print ("6 ADC = %lf"%(ADC_Value[6]*5.0/0x7fffff - offset))
-		#print ("7 ADC = %lf"%(ADC_Value[7]*5.0/0x7fffff - offset))
-		#print ("\33[9A")
+	volts=0
+	ADC_Value = ADC.ADS1256_GetAll()
+	for i in range (0,8):
+		volts = ADC_Value[i] * 5.0 / x) - offset
+		print (i, round(volts,3))
+	#ADC_Value = ADC.ADS1256_GetAll()
+	#print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff - offset))
+	#print ("1 ADC = %lf"%(ADC_Value[1]*5.0/0x7fffff - offset))
+	#print ("2 ADC = %lf"%(ADC_Value[2]*5.0/0x7fffff - offset))
+	#print ("3 ADC = %lf"%(ADC_Value[3]*5.0/0x7fffff - offset))
+	#print ("4 ADC = %lf"%(ADC_Value[4]*5.0/0x7fffff - offset))
+	Vprint ("5 ADC = %lf"%(ADC_Value[5]*5.0/0x7fffff - offset))
+	#print ("6 ADC = %lf"%(ADC_Value[6]*5.0/0x7fffff - offset))
+	#print ("7 ADC = %lf"%(ADC_Value[7]*5.0/0x7fffff - offset))
+	#print ("\33[9A")
 except :
 	GPIO.cleanup()
 	print ("\r\nProgram end     ")
