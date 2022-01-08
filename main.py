@@ -34,10 +34,11 @@ try:
 	offset =  1.235
 	while(1):
 		volts=0
-		for i in range (ADC.ADS1256_GetAll())
+		ADC_Value = ADC.ADS1256_GetAll()
+		for i in range (7):
 			volts = ADC_Value[i]*5.0/0x7fffff - offset)
 			print ( i, volts)
-		ADC_Value = ADC.ADS1256_GetAll()
+		#ADC_Value = ADC.ADS1256_GetAll()
 		#print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff - offset))
 		#print ("1 ADC = %lf"%(ADC_Value[1]*5.0/0x7fffff - offset))
 		#print ("2 ADC = %lf"%(ADC_Value[2]*5.0/0x7fffff - offset))
