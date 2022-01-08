@@ -36,7 +36,7 @@ try:
 		volts=0
 		ADC_Value = ADC.ADS1256_GetAll()
 		for i in range (7):
-			volts = ADC_Value[i]*5.0/0x7fffff - offset)
+			volts = ADC_Value[i]*5.0/0x7fffff - offset
 			print ( i, volts)
 		#ADC_Value = ADC.ADS1256_GetAll()
 		#print ("0 ADC = %lf"%(ADC_Value[0]*5.0/0x7fffff - offset))
